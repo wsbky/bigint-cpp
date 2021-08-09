@@ -2,7 +2,7 @@ cmake_policy(SET CMP0050 NEW)
 
 cmake_minimum_required(VERSION 3.10)
 
-project(FracLib)
+project(BigintLib)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -13,10 +13,10 @@ set(TEST_DIR ${PROJECT_SOURCE_DIR}/test)
 
 add_compile_options(-Wall -Werror -Wextra -O2)
 
-add_library(Frac STATIC ${SRC_DIR}/frac.cc)
+add_library(Bigint STATIC ${SRC_DIR}/bigint.cc)
 add_executable(Main ${TEST_DIR}/main.cc)
 
 target_include_directories(Main PUBLIC ${SRC_DIR})
-target_include_directories(Frac PUBLIC ${SRC_DIR})
-target_link_libraries(Main Frac)
+target_include_directories(Bigint PUBLIC ${SRC_DIR})
+target_link_libraries(Main Bigint)
 
