@@ -7,16 +7,16 @@ project(BigintLib)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_FLAGS "-Wall -Werror -Wextra -O2")
+set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Werror -Wextra -O0 -g")
 
 set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
-set(TEST_DIR ${PROJECT_SOURCE_DIR}/test)
+set(SAMPLE_DIR ${PROJECT_SOURCE_DIR}/sample)
 
-add_compile_options(-Wall -Werror -Wextra -O2)
+add_library(bigint STATIC ${SRC_DIR}/bigint.cc)
+add_executable(main ${SAMPLE_DIR}/main.cc)
 
-add_library(Bigint STATIC ${SRC_DIR}/bigint.cc)
-add_executable(Main ${TEST_DIR}/main.cc)
-
-target_include_directories(Main PUBLIC ${SRC_DIR})
-target_include_directories(Bigint PUBLIC ${SRC_DIR})
-target_link_libraries(Main Bigint)
+target_include_directories(main PUBLIC ${SRC_DIR})
+target_include_directories(bigint PUBLIC ${SRC_DIR})
+target_link_libraries(main bigint)
 
