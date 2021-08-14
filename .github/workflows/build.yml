@@ -3,11 +3,11 @@ name: Build
 on:
   push:
     paths-ignore:
-    - 'License'
+    - 'LICENSE'
     - 'README.md'
   pull_request:
     paths-ignore:
-      - 'License'
+      - 'LICENSE'
       - 'README.md'
 
 jobs:
@@ -36,6 +36,6 @@ jobs:
 
       - name: Configure
         run: cmake ${{env.workflow_src_dir}}
-      
+
       - name: Build
         run: cmake --build .
