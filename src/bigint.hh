@@ -230,9 +230,9 @@ struct bigint {
                 for (int i = 0; tmp != 0; ++i) {
                     if (dim + (unsigned long)i < num.size()) {
                         tmp += num.at(dim + i);
-                        num.at(dim + i) = tmp % (unsigned long long)(base);
+                        num.at(dim + i) = tmp % base;
                     } else
-                        num.push_back(tmp % (unsigned long long)(base));
+                        num.push_back(tmp % base);
                     tmp /= base;
                 }
             }
@@ -240,24 +240,28 @@ struct bigint {
         return *this;
     }
 
-    bigint &division_a(const bigint &a) {
+    bigint &division_a(const bigint &s) {
+        bigint t = (*this).abs();
+        bigint a = s.abs();
         if (num.empty() || a.num.empty()) {
             throw std::runtime_error("Operator/=: Object is empty.");
         }
         if (a == 0) throw std::runtime_error("Division by zero");
-        if ((*this).abs() < a.abs()) {
+        if (t < a) {
             num.clear();
             num.push_back(0);
             return *this;
         }
-        if ((*this).abs() == a.abs()) {
+        if (t == a) {
             num.clear();
             num.push_back(1);
-            pos ^= !a.pos;
+            pos ^= !s.pos;
             return *this;
         }
         auto div_t = num.size() - a.num.size() + 1;
-        bigint t(*this);
+        pos ^= !s.pos;
+        a = a.abs();
+        t = t.abs();
         num.clear();
         num.resize(div_t, 0);
         auto ot_size = t.num.size();

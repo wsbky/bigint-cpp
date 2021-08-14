@@ -22,14 +22,14 @@ bigint::bigint(long n) : pos(n >= 0) {
     n = std::abs(n);
     if (n == 0) num.push_back(0);
     while (n != 0) {
-        num.push_back(n % long(base));
+        num.push_back(n % base);
         n /= base;
     }
 }
 bigint::bigint(unsigned long n, bool p) : pos(p) {
     if (n == 0) num.push_back(0);
     while (n != 0) {
-        num.push_back(n % (unsigned long)(base));
+        num.push_back(n % base);
         n /= base;
     }
 }
@@ -37,7 +37,7 @@ bigint::bigint(long long n) : pos(n >= 0) {
     n = std::abs(n);
     if (n == 0) num.push_back(0);
     while (n != 0) {
-        num.push_back(n % (long long)base);
+        num.push_back(n % base);
         n /= base;
     }
 }
