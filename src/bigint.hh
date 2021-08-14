@@ -230,9 +230,9 @@ struct bigint {
                 for (int i = 0; tmp != 0; ++i) {
                     if (dim + (unsigned long)i < num.size()) {
                         tmp += num.at(dim + i);
-                        num.at(dim + i) = tmp % base;
+                        num.at(dim + i) = tmp % (unsigned long long)(base);
                     } else
-                        num.push_back(tmp % base);
+                        num.push_back(tmp % (unsigned long long)(base));
                     tmp /= base;
                 }
             }
