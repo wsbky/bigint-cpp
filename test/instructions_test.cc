@@ -161,6 +161,48 @@ TEST(operator_compound_division, pp) {
     bigint f(999999999999);
     EXPECT_EQ(bigint(1002004008), f /= bigint(998));
 }
+TEST(operator_compound_division, pn) {
+    bigint a(1);
+    EXPECT_ANY_THROW(a /= 0);
+    bigint b(1);
+    EXPECT_EQ(bigint(-1), b /= bigint(-1));
+    bigint c(999999999999);
+    EXPECT_EQ(bigint(-1001001001), c /= bigint(-999));
+    bigint d(9999999999);
+    EXPECT_EQ(bigint(-999999999), d /= bigint(-10));
+    bigint e(999999999999);
+    EXPECT_EQ(bigint(-999999999), e /= bigint(-1000));
+    bigint f(999999999999);
+    EXPECT_EQ(bigint(-1002004008), f /= bigint(-998));
+}
+TEST(operator_compound_division, np) {
+    bigint a(-1);
+    EXPECT_ANY_THROW(a /= 0);
+    bigint b(-1);
+    EXPECT_EQ(bigint(-1), b /= bigint(1));
+    bigint c(-999999999999);
+    EXPECT_EQ(bigint(-1001001001), c /= bigint(999));
+    bigint d(-9999999999);
+    EXPECT_EQ(bigint(-999999999), d /= bigint(10));
+    bigint e(-999999999999);
+    EXPECT_EQ(bigint(-999999999), e /= bigint(1000));
+    bigint f(-999999999999);
+    EXPECT_EQ(bigint(-1002004008), f /= bigint(998));
+}
+TEST(operator_compound_division, nn) {
+    bigint a(-1);
+    EXPECT_ANY_THROW(a /= 0);
+    bigint b(-1);
+    EXPECT_EQ(bigint(1), b /= bigint(-1));
+    bigint c(-999999999999);
+    EXPECT_EQ(bigint(1001001001), c /= bigint(-999));
+    bigint d(-9999999999);
+    EXPECT_EQ(bigint(999999999), d /= bigint(-10));
+    bigint e(-999999999999);
+    EXPECT_EQ(bigint(999999999), e /= bigint(-1000));
+    bigint f(-999999999999);
+    EXPECT_EQ(bigint(1002004008), f /= bigint(-998));
+}
 
 TEST(method_fact, normal) {
     bigint a(10);
