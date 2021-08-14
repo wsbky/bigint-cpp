@@ -13,7 +13,7 @@ message("std=c++${CMAKE_CXX_STANDARD}")
 set(SRC_DIR ${PROJECT_SOURCE_DIR}/)
 set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/../src)
 
-add_compile_options(-Wall -Werror -Wextra -Wconversion -Wno-sign-conversion -Wshadow)
+add_compile_options(-Wall -Werror -Wextra -Wno-sign-conversion -Wshadow)
 
 enable_testing()
 
