@@ -1,4 +1,4 @@
-# Big integer library for C++
+# Big Integer Library for C++
 
 [![Build](https://github.com/wsbky/bigint-cpp/actions/workflows/build.yml/badge.svg)](https://github.com/wsbky/bigint-cpp/actions/workflows/build.yml)
 [![Test](https://github.com/wsbky/bigint-cpp/actions/workflows/test.yml/badge.svg)](https://github.com/wsbky/bigint-cpp/actions/workflows/test.yml)
